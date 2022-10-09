@@ -1,0 +1,6 @@
+FROM python:3
+COPY . yolov5
+COPY ./best.pt best.pt
+RUN pip3 install -r yolov5/requirements.txt
+RUN apt-get update
+RUN apt-get install ffmpeg libsm6 libxext6  -y
