@@ -51,6 +51,53 @@
   </div>
 </div>
 
+## <div align="center">Quick Overview (Robotictech)</div>
+
+To train a custom model:
+
+### 1) Check dataset.yaml file
+
+**Check if your path directory really points to your dataset.**
+
+dataset.yaml parameters:
+
+- `path`: path location
+- `train`: train images location relative to path
+- `valid`: valid images location relative to path
+- `test`: test images location relative to path
+
+### 2) Select a model
+
+Take a look at model's comparassion:
+
+https://github.com/ultralytics/yolov5#pretrained-checkpoints
+
+We will use YOLOv5m6 in local environments.
+
+### 3) Train your model
+
+```
+python train.py --img 1280 --batch 16 --epochs 100 --data ../dataset.yaml --weights yolov5s6.pt --cache
+```
+
+- `img`: image size
+- `batch`: mini-batch size. If you increase this number, it will demand more computational power
+- `epochs`: number of epochs (iterations over all the training examples). You need to find the best tradeoff. If you train for fewer epochs, the model may underfit, but it may overfit as well if you train it for a lot of epochs
+- `weights`: use pre-trained weights (recommended)
+
+**Tip**: Use `--cache ram`, `--cache disk` or simply `--cache` to speed up training (requires significant RAM/disk resources)
+
+### 4) Model validation
+
+```
+python val.py --weights '.pt file location' --batch 16 --data '../dataset.yaml' --task test --save-json
+```
+
+### 5) Detections on selected folder
+
+```
+python detect.py --weights '.pt file location' --conf 0.6 --source 'folder path' --save-txt
+```
 
 ## <div align="center">Documentation</div>
 
