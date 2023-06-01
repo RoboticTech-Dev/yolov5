@@ -33,6 +33,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
         run: |
+          aws s3 cp s3://robotic-tech-images/models/yolov5_light_poles/ ./ --recursive
           docker build -t yolo -f Dockerfile_yolo .
           docker tag yolo:latest $ECR_REGISTRY/robotic_tech_repo_class_yolo:latest
           docker push $ECR_REGISTRY/robotic_tech_repo_class_yolo:latest
