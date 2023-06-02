@@ -1,5 +1,5 @@
 FROM python:3.9
-COPY light_pole_yolov5s.pt light_pole_yolov5s.pt
+COPY light_pole_yolov5m6.pt light_pole_yolov5m6.pt
 COPY peak_yolov5m6.pt peak_yolov5m6.pt
 COPY . yolov5
 RUN pip3 install -r yolov5/requirements.txt
